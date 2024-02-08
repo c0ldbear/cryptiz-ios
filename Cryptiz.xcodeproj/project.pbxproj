@@ -11,6 +11,7 @@
 		1326183D2AF14354006DD925 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1326183C2AF14354006DD925 /* ContentView.swift */; };
 		1326183F2AF14358006DD925 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1326183E2AF14358006DD925 /* Assets.xcassets */; };
 		132618422AF14358006DD925 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 132618412AF14358006DD925 /* Preview Assets.xcassets */; };
+		13B03E4D2B752C8100CA13CC /* CryptoCurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B03E4C2B752C8100CA13CC /* CryptoCurrencyModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		1326183C2AF14354006DD925 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1326183E2AF14358006DD925 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		132618412AF14358006DD925 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		13B03E4C2B752C8100CA13CC /* CryptoCurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoCurrencyModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +53,7 @@
 		132618392AF14354006DD925 /* Cryptiz */ = {
 			isa = PBXGroup;
 			children = (
+				13B03E492B752C4100CA13CC /* Network */,
 				1326183A2AF14354006DD925 /* CryptizApp.swift */,
 				1326183C2AF14354006DD925 /* ContentView.swift */,
 				1326183E2AF14358006DD925 /* Assets.xcassets */,
@@ -65,6 +68,14 @@
 				132618412AF14358006DD925 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		13B03E492B752C4100CA13CC /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				13B03E4C2B752C8100CA13CC /* CryptoCurrencyModel.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13B03E4D2B752C8100CA13CC /* CryptoCurrencyModel.swift in Sources */,
 				1326183D2AF14354006DD925 /* ContentView.swift in Sources */,
 				1326183B2AF14354006DD925 /* CryptizApp.swift in Sources */,
 			);
