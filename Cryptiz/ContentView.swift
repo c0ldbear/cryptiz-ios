@@ -8,14 +8,44 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, Cryptiz!")
+    @State var cryptoData = CryptoCurrencyMock.mockData
+    @State private var searchCrypto: String = ""
+
+    var searchResults: [CryptoCurrencyMock] {
+        if searchCrypto.isEmpty {
+            return cryptoData
+        } else {
+            return cryptoData.filter {
+                $0.baseAsset.contains(searchCrypto.lowercased())
+            }
         }
-        .padding()
+    }
+
+    var body: some View {
+        NavigationStack {
+            // list all cryptos
+            List(searchResults) { crypto in
+                NavigationLink {
+                    // Detailed view
+                    VStack {
+                        Text(crypto.baseAsset.uppercased())
+                            .font(.largeTitle)
+                        Text("₹\(crypto.lastPrice)")
+                            .font(.title2)
+                    }
+                    Spacer()
+                } label: {
+                    HStack {
+                        Text(crypto.baseAsset)
+                        Spacer()
+                        Text("₹\(crypto.lastPrice)")
+                    }
+                }
+            }
+            .navigationTitle("Cryptos")
+        }
+        .searchable(text: $searchCrypto,
+                    prompt: Text("Find the crypto currency"))
     }
 }
 
