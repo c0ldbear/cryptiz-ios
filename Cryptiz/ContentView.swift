@@ -8,44 +8,53 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var cryptoData = CryptoCurrencyMock.mockData
     @State private var searchCrypto: String = ""
-
-    var searchResults: [CryptoCurrencyMock] {
-        if searchCrypto.isEmpty {
-            return cryptoData
-        } else {
-            return cryptoData.filter {
-                $0.baseAsset.contains(searchCrypto.lowercased())
-            }
-        }
-    }
+    @State var coins = [CryptoCoin]()
 
     var body: some View {
         NavigationStack {
             // list all cryptos
-            List(searchResults) { crypto in
+            List(coins) { crypto in
                 NavigationLink {
                     // Detailed view
                     VStack {
-                        Text(crypto.baseAsset.uppercased())
+                        Text(crypto.name.uppercased())
                             .font(.largeTitle)
-                        Text("₹\(crypto.lastPrice)")
+                        Text("\(String(crypto.quote["USD"]?.price ?? 0))")
                             .font(.title2)
                     }
                     Spacer()
                 } label: {
                     HStack {
-                        Text(crypto.baseAsset)
+                        Text(crypto.name.uppercased())
                         Spacer()
-                        Text("₹\(crypto.lastPrice)")
+                        Text("\(String(crypto.quote["USD"]?.price ?? 0))")
                     }
                 }
             }
-            .navigationTitle("Cryptos")
+            .toolbarTitleDisplayMode(.inlineLarge)
+            .navigationTitle("Crypto Currencies")
+            .toolbar {
+                ToolbarItem {
+                    Button {
+                        // Placeholder for action when pressing the gear icon (Open Settings)
+                        print(">> Settings shown as a modal or fullscreen?")
+                    } label: {
+                        Image(systemName: "gear")
+                    }
+                    .foregroundStyle(Color.primary)
+                }
+            }
         }
         .searchable(text: $searchCrypto,
                     prompt: Text("Find the crypto currency"))
+        .task {
+            do {
+                coins = try await NetworkManager.shared.fetchListingsLatestCoins()
+            } catch {
+                print(">> Error: \(error)")
+            }
+        }
     }
 }
 
