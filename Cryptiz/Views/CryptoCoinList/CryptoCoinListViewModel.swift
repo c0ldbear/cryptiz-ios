@@ -7,17 +7,11 @@
 
 import Foundation
 
-enum Decimal: Int {
-    case two   = 2
-    case three = 3
-    case four  = 4
-    case six   = 6
-}
-
 class CryptoCoinListViewModel: ObservableObject {
     @Published var coins = [CryptoCoin]()
     @Published var searchCrypto = ""
     @Published var showSettingsSheet = false
+    @Published var isLoading = false
 
     var filteredCoins: [CryptoCoin] {
         if searchCrypto.isEmpty {
@@ -31,31 +25,10 @@ class CryptoCoinListViewModel: ObservableObject {
     }
 
     @MainActor
-    init() {
-        self.fetchLatestCoins()
-    }
-
-    @MainActor
-    func fetchLatestCoins() {
-        Task {
-            do {
-                coins = try await NetworkManager.shared.fetchListingsLatestCoins()
-            } catch {
-                print(">> Error: \(error)")
-            }
-        }
-    }
-
-    func coinPrice(_ quotePrice: Double?) -> String {
-        guard let quotePrice = quotePrice else { return "N/A" }
-
-        var decimals = Decimal.two
-        if quotePrice < 1.0 { decimals = .four }
-        let formatted = quotePrice.formatted(.currency(code: "usd")
-            .presentation(.narrow)
-            .precision(.fractionLength(decimals.rawValue))
-            .locale(.current)
-        )
-        return formatted
+    func fetchLatestCoins() async throws {
+        coins = []
+        isLoading = true
+        coins = try await NetworkManager.shared.fetchListingsLatestCoins()
+        isLoading = false
     }
 }

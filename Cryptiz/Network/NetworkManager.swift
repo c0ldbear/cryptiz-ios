@@ -36,6 +36,9 @@ final class NetworkManager {
     private init() {}
 
     private func sendRequest(with urlString: String) async throws -> Data? {
+#if DEBUG
+        try await Task.sleep(nanoseconds: 600_000_000)
+#endif
         guard let url = URL(string: urlString) else {
             throw NetworkManagerError.invalidURL
         }

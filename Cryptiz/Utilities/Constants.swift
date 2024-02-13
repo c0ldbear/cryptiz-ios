@@ -19,3 +19,10 @@ enum ExchangeCurrency: String {
     case sek = "SEK"
     case usd = "USD"
 }
+
+enum Decimal: Int {
+    case two   = 2
+    case three = 3
+    case four  = 4
+    case six   = 6
+}

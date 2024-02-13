@@ -12,38 +12,58 @@ struct CryptoCoinListView: View {
 
     var body: some View {
         NavigationStack {
-            // list all cryptos
-            List(viewModel.filteredCoins) { crypto in
-                NavigationLink {
-                    // Detailed view
-                    DetailCryptoCoinView(viewModel:
-                                            DetailCryptoCoinViewModel(coin: crypto))
-                } label: {
-                    HStack {
-                        Text(crypto.name)
-                        Spacer()
-                        Text("\(crypto.rate)")
-                    }
-                }
-            }
-            .toolbarTitleDisplayMode(.inlineLarge)
-            .navigationTitle("Crypto Currencies")
-            .toolbar {
-                ToolbarItem {
-                    Button {
-                        viewModel.showSettingsSheet.toggle()
+            if viewModel.isLoading {
+                ProgressView()
+                    .controlSize(.large)
+            } else {
+                // list all cryptos
+                List(viewModel.filteredCoins) { crypto in
+                    NavigationLink {
+                        // Detailed view
+                        DetailCryptoCoinView(viewModel:
+                                                DetailCryptoCoinViewModel(coin: crypto))
                     } label: {
-                        Image(systemName: SFSymbols.gear)
+                        HStack {
+                            Text(crypto.name)
+                            Spacer()
+                            Text("\(crypto.rate)")
+                        }
                     }
-                    .foregroundStyle(Color.primary)
                 }
-            }
-            .sheet(isPresented: $viewModel.showSettingsSheet) {
-                SettingsView()
+                .toolbarTitleDisplayMode(.inlineLarge)
+                .navigationTitle("Crypto Currencies")
+                .toolbar {
+                    ToolbarItem {
+                        Button {
+                            viewModel.showSettingsSheet.toggle()
+                        } label: {
+                            Image(systemName: SFSymbols.gear)
+                        }
+                        .foregroundStyle(Color.primary)
+                    }
+                }
+                .sheet(isPresented: $viewModel.showSettingsSheet) {
+                    fetchCoins()
+                } content: {
+                    SettingsView()
+                }
             }
         }
         .searchable(text: $viewModel.searchCrypto,
                     prompt: Text("Find the crypto currency"))
+        .onAppear {
+            fetchCoins()
+        }
+    }
+
+    private func fetchCoins() {
+        Task {
+            do {
+                try await viewModel.fetchLatestCoins()
+            } catch {
+                print(">> error: \(error)")
+            }
+        }
     }
 }
 
