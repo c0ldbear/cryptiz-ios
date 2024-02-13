@@ -32,6 +32,11 @@ class CryptoCoinListViewModel: ObservableObject {
 
     @MainActor
     init() {
+        self.fetchLatestCoins()
+    }
+
+    @MainActor
+    func fetchLatestCoins() {
         Task {
             do {
                 coins = try await NetworkManager.shared.fetchListingsLatestCoins()

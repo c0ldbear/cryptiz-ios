@@ -20,11 +20,12 @@ class CryptoCoin: Codable, Identifiable {
     var quote: [String: Quote]
 
     var rate: String {
-        guard let quotePrice = self.quote["USD"]?.price else { return "N/A" }
+        let currentCurrency = UserSetting.shared.currency.rawValue
+        guard let quotePrice = self.quote[currentCurrency]?.price else { return "N/A" }
 
         var decimals = Decimal.two
         if quotePrice < 1.0 { decimals = .four }
-        let formatted = quotePrice.formatted(.currency(code: "usd")
+        let formatted = quotePrice.formatted(.currency(code: currentCurrency)
             .presentation(.narrow)
             .precision(.fractionLength(decimals.rawValue))
             .locale(.current)

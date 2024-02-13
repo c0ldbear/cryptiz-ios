@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @State var selectedCurrency = "SEK"
-    var currency = ["USD", "SEK"]
+    @Environment(\.dismiss) var dismiss
+    @State var selectedCurrency = UserSetting.shared.currency
+    var currency: [ExchangeCurrency] = [.usd, .sek]
 
     var body: some View {
         NavigationStack {
@@ -19,18 +20,25 @@ struct SettingsView: View {
                         .multilineTextAlignment(.leading)
                     Picker("Select Currency", selection: $selectedCurrency) {
                         ForEach(currency, id: \.self) {
-                            Text($0)
+                            Text($0.rawValue)
                         }
                     }
                     .pickerStyle(.segmented)
                     HStack{
                         Text("Selected:")
                         Spacer()
-                        Text(selectedCurrency)
+                        Text(selectedCurrency.rawValue)
                     }
                 }
             }
             .navigationTitle("Settings")
+            Button("Save Settings") {
+                dismiss()
+            }
+            .padding()
+        }
+        .onDisappear {
+            UserSetting.shared.currency = selectedCurrency
         }
     }
 }

@@ -29,6 +29,9 @@ final class NetworkManager {
         ["X-CMC_PRO_API_KEY" : apiKey,
          "Accept" : "application/json"]
     }
+    private var convert: String {
+        UserSetting.shared.currency.rawValue
+    }
 
     private init() {}
 
@@ -65,7 +68,12 @@ final class NetworkManager {
 
     func fetchListingsLatestCoins() async throws -> [CryptoCoin] {
         do {
-            if let coinData = try await sendRequest(with: baseURL + latestListings) {
+            var urlComponent = URLComponents(string: baseURL)
+            urlComponent?.path = latestListings
+            urlComponent?.queryItems = [URLQueryItem(name: "convert", value: convert)]
+
+            if let urlComponent = urlComponent?.string,
+               let coinData = try await sendRequest(with: urlComponent) {
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 let result = try decoder.decode(Base.self, from: coinData)

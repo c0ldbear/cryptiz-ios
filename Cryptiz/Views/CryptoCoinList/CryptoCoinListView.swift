@@ -33,7 +33,7 @@ struct CryptoCoinListView: View {
                     Button {
                         viewModel.showSettingsSheet.toggle()
                     } label: {
-                        Image(systemName: "gear")
+                        Image(systemName: SFSymbols.gear)
                     }
                     .foregroundStyle(Color.primary)
                 }
