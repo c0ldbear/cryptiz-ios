@@ -11,6 +11,7 @@
 		1326183D2AF14354006DD925 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1326183C2AF14354006DD925 /* ContentView.swift */; };
 		1326183F2AF14358006DD925 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1326183E2AF14358006DD925 /* Assets.xcassets */; };
 		132618422AF14358006DD925 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 132618412AF14358006DD925 /* Preview Assets.xcassets */; };
+		134A788D2B7A591E00D9B17C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134A788C2B7A591E00D9B17C /* NetworkManager.swift */; };
 		13B03E4D2B752C8100CA13CC /* CryptoCurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B03E4C2B752C8100CA13CC /* CryptoCurrencyModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -20,6 +21,7 @@
 		1326183C2AF14354006DD925 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1326183E2AF14358006DD925 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		132618412AF14358006DD925 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		134A788C2B7A591E00D9B17C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		13B03E4C2B752C8100CA13CC /* CryptoCurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoCurrencyModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -74,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				13B03E4C2B752C8100CA13CC /* CryptoCurrencyModel.swift */,
+				134A788C2B7A591E00D9B17C /* NetworkManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				134A788D2B7A591E00D9B17C /* NetworkManager.swift in Sources */,
 				13B03E4D2B752C8100CA13CC /* CryptoCurrencyModel.swift in Sources */,
 				1326183D2AF14354006DD925 /* ContentView.swift in Sources */,
 				1326183B2AF14354006DD925 /* CryptizApp.swift in Sources */,
