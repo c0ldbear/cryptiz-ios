@@ -7,20 +7,19 @@
 
 import SwiftUI
 
-struct ContentView: View {
-    @State private var searchCrypto: String = ""
-    @State var coins = [CryptoCoin]()
+struct CryptoCoinListView: View {
+    @StateObject var viewModel = CryptoCoinListViewModel()
 
     var body: some View {
         NavigationStack {
             // list all cryptos
-            List(coins) { crypto in
+            List(viewModel.filteredCoins) { crypto in
                 NavigationLink {
                     // Detailed view
                     VStack {
                         Text(crypto.name.uppercased())
                             .font(.largeTitle)
-                        Text("\(String(crypto.quote["USD"]?.price ?? 0))")
+                        Text("\(viewModel.coinPrice(crypto.quote["USD"]?.price))")
                             .font(.title2)
                     }
                     Spacer()
@@ -28,7 +27,7 @@ struct ContentView: View {
                     HStack {
                         Text(crypto.name.uppercased())
                         Spacer()
-                        Text("\(String(crypto.quote["USD"]?.price ?? 0))")
+                        Text("\(viewModel.coinPrice(crypto.quote["USD"]?.price))")
                     }
                 }
             }
@@ -46,18 +45,11 @@ struct ContentView: View {
                 }
             }
         }
-        .searchable(text: $searchCrypto,
+        .searchable(text: $viewModel.searchCrypto,
                     prompt: Text("Find the crypto currency"))
-        .task {
-            do {
-                coins = try await NetworkManager.shared.fetchListingsLatestCoins()
-            } catch {
-                print(">> Error: \(error)")
-            }
-        }
     }
 }
 
 #Preview {
-    ContentView()
+    CryptoCoinListView()
 }
