@@ -18,6 +18,19 @@ class CryptoCoin: Codable, Identifiable {
     var name: String
     var symbol: String
     var quote: [String: Quote]
+
+    var rate: String {
+        guard let quotePrice = self.quote["USD"]?.price else { return "N/A" }
+
+        var decimals = Decimal.two
+        if quotePrice < 1.0 { decimals = .four }
+        let formatted = quotePrice.formatted(.currency(code: "usd")
+            .presentation(.narrow)
+            .precision(.fractionLength(decimals.rawValue))
+            .locale(.current)
+        )
+        return formatted
+    }
 }
 
 class Quote: Codable {

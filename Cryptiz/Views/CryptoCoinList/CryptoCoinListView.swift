@@ -16,18 +16,13 @@ struct CryptoCoinListView: View {
             List(viewModel.filteredCoins) { crypto in
                 NavigationLink {
                     // Detailed view
-                    VStack {
-                        Text(crypto.name.uppercased())
-                            .font(.largeTitle)
-                        Text("\(viewModel.coinPrice(crypto.quote["USD"]?.price))")
-                            .font(.title2)
-                    }
-                    Spacer()
+                    DetailCryptoCoinView(viewModel:
+                                            DetailCryptoCoinViewModel(coin: crypto))
                 } label: {
                     HStack {
-                        Text(crypto.name.uppercased())
+                        Text(crypto.name)
                         Spacer()
-                        Text("\(viewModel.coinPrice(crypto.quote["USD"]?.price))")
+                        Text("\(crypto.rate)")
                     }
                 }
             }

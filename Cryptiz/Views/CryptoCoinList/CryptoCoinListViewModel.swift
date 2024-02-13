@@ -8,10 +8,10 @@
 import Foundation
 
 enum Decimal: Int {
-    case two   = 100
-    case three = 1000
-    case four  = 10_000
-    case six   = 1_000_000
+    case two   = 2
+    case three = 3
+    case four  = 4
+    case six   = 6
 }
 
 class CryptoCoinListViewModel: ObservableObject {
@@ -45,7 +45,7 @@ class CryptoCoinListViewModel: ObservableObject {
 
         var decimals = Decimal.two
         if quotePrice < 1.0 { decimals = .four }
-        var formatted = quotePrice.formatted(.currency(code: "usd")
+        let formatted = quotePrice.formatted(.currency(code: "usd")
             .presentation(.narrow)
             .precision(.fractionLength(decimals.rawValue))
             .locale(.current)
