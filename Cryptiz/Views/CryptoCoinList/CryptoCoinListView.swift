@@ -31,13 +31,15 @@ struct CryptoCoinListView: View {
             .toolbar {
                 ToolbarItem {
                     Button {
-                        // Placeholder for action when pressing the gear icon (Open Settings)
-                        print(">> Settings shown as a modal or fullscreen?")
+                        viewModel.showSettingsSheet.toggle()
                     } label: {
                         Image(systemName: "gear")
                     }
                     .foregroundStyle(Color.primary)
                 }
+            }
+            .sheet(isPresented: $viewModel.showSettingsSheet) {
+                SettingsView()
             }
         }
         .searchable(text: $viewModel.searchCrypto,

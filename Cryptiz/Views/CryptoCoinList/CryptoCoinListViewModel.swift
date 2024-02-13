@@ -17,6 +17,7 @@ enum Decimal: Int {
 class CryptoCoinListViewModel: ObservableObject {
     @Published var coins = [CryptoCoin]()
     @Published var searchCrypto = ""
+    @Published var showSettingsSheet = false
 
     var filteredCoins: [CryptoCoin] {
         if searchCrypto.isEmpty {
