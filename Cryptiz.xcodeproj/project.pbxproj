@@ -67,10 +67,11 @@
 		132618392AF14354006DD925 /* Cryptiz */ = {
 			isa = PBXGroup;
 			children = (
-				1373EDB82B7BA73900B6D062 /* Utilities */,
-				13BAA8062B7B642C00693DF3 /* Views */,
-				13B03E492B752C4100CA13CC /* Network */,
 				1326183A2AF14354006DD925 /* CryptizApp.swift */,
+				1373EDBD2B7BCE2A00B6D062 /* Models */,
+				13BAA8062B7B642C00693DF3 /* Views */,
+				1373EDB82B7BA73900B6D062 /* Utilities */,
+				13B03E492B752C4100CA13CC /* Network */,
 				1326183E2AF14358006DD925 /* Assets.xcassets */,
 				132618402AF14358006DD925 /* Preview Content */,
 			);
@@ -111,10 +112,17 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		13B03E492B752C4100CA13CC /* Network */ = {
+		1373EDBD2B7BCE2A00B6D062 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				13B03E4C2B752C8100CA13CC /* CryptoCurrencyModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		13B03E492B752C4100CA13CC /* Network */ = {
+			isa = PBXGroup;
+			children = (
 				134A788C2B7A591E00D9B17C /* NetworkManager.swift */,
 			);
 			path = Network;
