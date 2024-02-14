@@ -40,12 +40,9 @@ struct CryptoCoinListView: View {
             }
             .toolbar {
                 ToolbarItem {
-                    Button {
+                    SettingsButton {
                         viewModel.showSettingsSheet.toggle()
-                    } label: {
-                        Image(systemName: SFSymbols.gear)
                     }
-                    .foregroundStyle(Color.primary)
                 }
             }
             .toolbarTitleDisplayMode(.inlineLarge)

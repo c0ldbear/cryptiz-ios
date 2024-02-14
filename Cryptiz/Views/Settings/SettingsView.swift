@@ -32,7 +32,7 @@ struct SettingsView: View {
                 }
             }
             .navigationTitle("Settings")
-            Button("Save Settings") {
+            PrimaryButton("Save Settings") {
                 dismiss()
             }
             .padding()
