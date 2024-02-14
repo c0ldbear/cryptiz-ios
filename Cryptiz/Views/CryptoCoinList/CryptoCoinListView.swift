@@ -51,7 +51,7 @@ struct CryptoCoinListView: View {
                 fetchCoins()
             }
             .searchable(text: $viewModel.searchCrypto,
-                        prompt: Text("Find the crypto currency"))
+                        prompt: Text("Find crypto currency"))
         }
         .onAppear {
             fetchCoins()

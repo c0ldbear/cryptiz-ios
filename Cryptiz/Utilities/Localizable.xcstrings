@@ -1,0 +1,110 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%@" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@"
+          }
+        }
+      }
+    },
+    "Crypto Currencies" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cryptovalutor"
+          }
+        }
+      }
+    },
+    "Crypto Currency" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cryptovaluta"
+          }
+        }
+      }
+    },
+    "Find crypto currency" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hitta cryptovaluta"
+          }
+        }
+      }
+    },
+    "Latest price:" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Senaste pris:"
+          }
+        }
+      }
+    },
+    "Save Settings" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spara Inställningar"
+          }
+        }
+      }
+    },
+    "Select Currency" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Välj valuta"
+          }
+        }
+      }
+    },
+    "Select preferred currency" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Välj den föredragna valutan"
+          }
+        }
+      }
+    },
+    "Selected:" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vald:"
+          }
+        }
+      }
+    },
+    "Settings" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inställningar"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

@@ -20,7 +20,7 @@ struct PrimaryButton: View {
         Button{
             action()
         } label: {
-            Text(title)
+            Text(LocalizedStringKey(title))
                 .font(.title3)
                 .bold()
         }

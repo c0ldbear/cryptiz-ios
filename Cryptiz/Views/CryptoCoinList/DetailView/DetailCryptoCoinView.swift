@@ -14,9 +14,14 @@ struct DetailCryptoCoinView: View {
         VStack {
             Text(viewModel.coin.name)
                 .font(.largeTitle)
-            Text("\(viewModel.coin.rate)")
-                .font(.title2)
+            HStack {
+                Text("Latest price:")
+                Spacer()
+                Text("\(viewModel.coin.rate)")
+            }
+            .font(.title2)
         }
+        .padding(.horizontal, 50)
         Spacer()
     }
 }
