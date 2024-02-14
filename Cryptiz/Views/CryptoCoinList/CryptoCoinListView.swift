@@ -12,45 +12,50 @@ struct CryptoCoinListView: View {
 
     var body: some View {
         NavigationStack {
-            if viewModel.isLoading {
-                ProgressView()
-                    .controlSize(.large)
-            } else {
-                // list all cryptos
-                List(viewModel.filteredCoins) { crypto in
-                    NavigationLink {
-                        // Detailed view
-                        DetailCryptoCoinView(viewModel:
-                                                DetailCryptoCoinViewModel(coin: crypto))
-                    } label: {
-                        HStack {
-                            Text(crypto.name)
-                            Spacer()
-                            Text("\(crypto.rate)")
-                        }
-                    }
-                }
-                .toolbarTitleDisplayMode(.inlineLarge)
-                .navigationTitle("Crypto Currencies")
-                .toolbar {
-                    ToolbarItem {
-                        Button {
-                            viewModel.showSettingsSheet.toggle()
+            VStack {
+                if viewModel.isLoading {
+                    ProgressView()
+                        .controlSize(.large)
+                } else {
+                    // list all cryptos
+                    List(viewModel.filteredCoins) { crypto in
+                        NavigationLink {
+                            // Detailed view
+                            DetailCryptoCoinView(viewModel:
+                                                    DetailCryptoCoinViewModel(coin: crypto))
                         } label: {
-                            Image(systemName: SFSymbols.gear)
+                            HStack {
+                                Text(crypto.name)
+                                Spacer()
+                                Text("\(crypto.rate)")
+                            }
                         }
-                        .foregroundStyle(Color.primary)
                     }
-                }
-                .sheet(isPresented: $viewModel.showSettingsSheet) {
-                    fetchCoins()
-                } content: {
-                    SettingsView()
+                    .sheet(isPresented: $viewModel.showSettingsSheet) {
+                        fetchCoins()
+                    } content: {
+                        SettingsView()
+                    }
                 }
             }
+            .toolbar {
+                ToolbarItem {
+                    Button {
+                        viewModel.showSettingsSheet.toggle()
+                    } label: {
+                        Image(systemName: SFSymbols.gear)
+                    }
+                    .foregroundStyle(Color.primary)
+                }
+            }
+            .toolbarTitleDisplayMode(.inlineLarge)
+            .navigationTitle("Crypto Currencies")
+            .refreshable {
+                fetchCoins()
+            }
+            .searchable(text: $viewModel.searchCrypto,
+                        prompt: Text("Find the crypto currency"))
         }
-        .searchable(text: $viewModel.searchCrypto,
-                    prompt: Text("Find the crypto currency"))
         .onAppear {
             fetchCoins()
         }
