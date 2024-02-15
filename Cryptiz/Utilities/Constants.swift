@@ -21,11 +21,11 @@ enum ExchangeCurrency: String {
     case usd = "USD"
 }
 
-enum Language: String {
+enum AppLanguage: String, CaseIterable {
     case en = "en"
     case sv = "sv"
 
-    func string() -> String {
+    var string: String {
         switch self {
         case .en:
             "English"

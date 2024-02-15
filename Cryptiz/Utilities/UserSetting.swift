@@ -26,12 +26,16 @@ class UserSetting {
         }
     }
 
-    var language: String {
+    var language: AppLanguage {
         get {
-            return UserDefaults.standard.string(forKey: Keys.language) ?? "en"
+            guard let userDefaultsSavedLanguage = UserDefaults.standard.string(forKey: Keys.language),
+                  let userSavedLanguage = AppLanguage(rawValue: userDefaultsSavedLanguage) else {
+                return .en
+            }
+            return userSavedLanguage
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: Keys.language)
+            UserDefaults.standard.set(newValue.rawValue, forKey: Keys.language)
         }
     }
 }

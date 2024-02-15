@@ -14,12 +14,8 @@ struct SettingsView: View {
     @State var showAlertRestartApp = false
 
     var currency: [ExchangeCurrency] = [.usd, .sek]
-    var languages: [String] {
-        // check available languages in the user's phone
-        guard let availableLanguages = UserDefaults.standard.object(forKey: "AppleLanguages") as? [String] else {
-            return []
-        }
-        return availableLanguages
+    var languages: [AppLanguage] {
+        return AppLanguage.allCases
     }
 
     var body: some View {
@@ -42,37 +38,27 @@ struct SettingsView: View {
                         }
                     }
 
-                    if languages.count > 1 {
-                        Divider()
-                            .padding(.vertical, 16)
+                    Divider()
+                        .padding(.vertical, 16)
 
-                        VStack {
-                            Text("Select app language")
-                                .multilineTextAlignment(.leading)
+                    VStack {
+                        Text("Select app language")
+                            .multilineTextAlignment(.leading)
 
-                            if languages.count < 3 {
-                                Picker("Select language", selection: $selectedLanguage) {
-                                    ForEach(languages, id: \.self) {
-                                        Text($0)
-                                    }
-                                }
-                                .pickerStyle(.segmented)
-                            } else {
-                                Picker("Select language", selection: $selectedLanguage) {
-                                    ForEach(languages, id: \.self) {
-                                        Text($0)
-                                    }
-                                }
-                            }
-                            HStack {
-                                Text("Selected:")
-                                Spacer()
-                                Text(selectedLanguage)
+                        Picker("Select language", selection: $selectedLanguage) {
+                            ForEach(languages, id: \.self) {
+                                Text($0.string)
                             }
                         }
-                        .navigationTitle("Settings")
-                        .navigationBarTitleDisplayMode(.inline)
+                        .pickerStyle(.segmented)
+                        HStack {
+                            Text("Selected:")
+                            Spacer()
+                            Text(selectedLanguage.rawValue)
+                        }
                     }
+                    .navigationTitle("Settings")
+                    .navigationBarTitleDisplayMode(.inline)
                 }
                 .padding()
                 .background(Color(red: 44/255, green: 44/255, blue: 46/255))
