@@ -20,6 +20,7 @@ struct CryptizApp: App {
         WindowGroup {
             CryptoCoinListView()
                 .environment(\.locale, .init(identifier: selectedLocale.rawValue))
+                .preferredColorScheme(.dark)
         }
     }
 }

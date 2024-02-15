@@ -45,7 +45,7 @@ struct SettingsView: View {
                     .navigationBarTitleDisplayMode(.inline)
                 }
                 .padding()
-                .background(Color(red: 44/255, green: 44/255, blue: 46/255))
+                .background(Color(red: 0.17, green: 0.17, blue: 0.18))
                 .clipShape(RoundedRectangle(cornerRadius: 10))
 
                 Spacer()
