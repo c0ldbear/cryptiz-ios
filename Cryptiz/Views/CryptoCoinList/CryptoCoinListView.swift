@@ -13,18 +13,20 @@ struct CryptoCoinListView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                if viewModel.isLoading {
+                switch viewModel.state {
+                case .loading:
                     ProgressView()
                         .controlSize(.large)
-                } else if viewModel.noSearchResults {
-                    Text("No cryptos found.")
-                        .font(.title2)
-                        .foregroundStyle(Color.secondary)
-                        .padding()
-                    Spacer()
-                } else {
-                    // list all cryptos
-                    List(viewModel.filteredCoins) { crypto in
+                case .noSearchResult:
+                    VStack {
+                        Text("No cryptos found.")
+                            .font(.title2)
+                            .foregroundStyle(Color.secondary)
+                            .padding()
+                        Spacer()
+                    }
+                case .showResults(let coins): // List all crypto currencies
+                    List(coins) { crypto in
                         NavigationLink {
                             // Detailed view
                             DetailCryptoCoinView(viewModel:

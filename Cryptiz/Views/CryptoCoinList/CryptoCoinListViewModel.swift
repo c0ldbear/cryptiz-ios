@@ -8,34 +8,50 @@
 import Foundation
 import Observation
 
+enum CryptoCoinListState {
+    case loading
+    case noSearchResult
+    case showResults(coins: [CryptoCoin])
+}
+
 @Observable
 class CryptoCoinListViewModel {
-    var coins = [CryptoCoin]()
-    var searchCrypto = ""
-    var showSettingsSheet = false
-    var isLoading = false
-    var noSearchResults = false
-
-    var filteredCoins: [CryptoCoin] {
-        if searchCrypto.isEmpty {
-            return coins
-        } else {
-            let keyword = searchCrypto.lowercased()
-            let searchResult = coins.filter { item in
-                item.name.lowercased().contains(keyword) || item.symbol.lowercased().contains(keyword)
-            }
-            
-            noSearchResults = searchResult.isEmpty
-
-            return searchResult
+    private var coins = [CryptoCoin]()
+    var searchCrypto = "" {
+        didSet {
+            filterCoinsBySearchKeyword()
         }
     }
+    var showSettingsSheet = false
+    var state: CryptoCoinListState = .loading
 
     @MainActor
     func fetchLatestCoins() async throws {
-        coins = []
-        isLoading = true
+        //        state = .showResults(coins: [])
+        state = .loading
         coins = try await NetworkManager.shared.fetchListingsLatestCoins()
-        isLoading = false
+        state = .showResults(coins: coins)
+    }
+
+    private func filterCoinsBySearchKeyword() {
+        if searchCrypto.isEmpty {
+            state = .showResults(coins: coins)
+            return
+        }
+
+        let keyword = searchCrypto.lowercased()
+
+        if case let .showResults(coins) = state {
+            let searchResult = coins.filter { coin in
+                coin.name.lowercased().contains(keyword) || coin.symbol.lowercased().contains(keyword)
+            }
+
+            if searchResult.isEmpty {
+                state = .noSearchResult
+            } else {
+                state = .showResults(coins: searchResult)
+            }
+        }
+
     }
 }
