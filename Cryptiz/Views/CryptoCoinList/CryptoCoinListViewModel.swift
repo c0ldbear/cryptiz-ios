@@ -14,15 +14,20 @@ class CryptoCoinListViewModel {
     var searchCrypto = ""
     var showSettingsSheet = false
     var isLoading = false
+    var noSearchResults = false
 
     var filteredCoins: [CryptoCoin] {
         if searchCrypto.isEmpty {
             return coins
         } else {
             let keyword = searchCrypto.lowercased()
-            return coins.filter { item in
+            let searchResult = coins.filter { item in
                 item.name.lowercased().contains(keyword) || item.symbol.lowercased().contains(keyword)
             }
+            
+            noSearchResults = searchResult.isEmpty
+
+            return searchResult
         }
     }
 

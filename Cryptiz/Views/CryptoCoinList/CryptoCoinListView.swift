@@ -16,6 +16,12 @@ struct CryptoCoinListView: View {
                 if viewModel.isLoading {
                     ProgressView()
                         .controlSize(.large)
+                } else if viewModel.noSearchResults {
+                    Text("No cryptos found.")
+                        .font(.title2)
+                        .foregroundStyle(Color.secondary)
+                        .padding()
+                    Spacer()
                 } else {
                     // list all cryptos
                     List(viewModel.filteredCoins) { crypto in
