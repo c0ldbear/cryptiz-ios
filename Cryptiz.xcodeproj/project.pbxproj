@@ -78,7 +78,7 @@
 				13BAA8062B7B642C00693DF3 /* Views */,
 				1373EDB82B7BA73900B6D062 /* Utilities */,
 				13B03E492B752C4100CA13CC /* Network */,
-				1326183E2AF14358006DD925 /* Assets.xcassets */,
+				1373EDC72B7CF3FC00B6D062 /* Resources */,
 				132618402AF14358006DD925 /* Preview Content */,
 			);
 			path = Cryptiz;
@@ -114,7 +114,6 @@
 			children = (
 				1373EDB92B7BA74800B6D062 /* Constants.swift */,
 				1373EDBB2B7BA91A00B6D062 /* UserSetting.swift */,
-				1373EDC52B7CE8BA00B6D062 /* Localizable.xcstrings */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -134,6 +133,15 @@
 				1373EDC12B7CCB5000B6D062 /* SettingsButton.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		1373EDC72B7CF3FC00B6D062 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1326183E2AF14358006DD925 /* Assets.xcassets */,
+				1373EDC52B7CE8BA00B6D062 /* Localizable.xcstrings */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		13B03E492B752C4100CA13CC /* Network */ = {

@@ -9,9 +9,17 @@ import SwiftUI
 
 @main
 struct CryptizApp: App {
+
+    var selectedLocale: String
+
+    init() {
+        selectedLocale = UserSetting.shared.language
+    }
+
     var body: some Scene {
         WindowGroup {
             CryptoCoinListView()
+                .environment(\.locale, .init(identifier: selectedLocale))
         }
     }
 }

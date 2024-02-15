@@ -11,6 +11,16 @@
         }
       }
     },
+    "Cancel" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avbryt"
+          }
+        }
+      }
+    },
     "Crypto Currencies" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -29,6 +39,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cryptovaluta"
+          }
+        }
+      }
+    },
+    "English" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "English"
           }
         }
       }
@@ -54,6 +75,26 @@
         }
       }
     },
+    "OK" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
+    },
+    "Restart the app to change language" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Starta om appen för att ändra språket"
+          }
+        }
+      }
+    },
     "Save Settings" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -65,12 +106,32 @@
         }
       }
     },
+    "Select app language" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Språk för appen"
+          }
+        }
+      }
+    },
     "Select Currency" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Välj valuta"
+          }
+        }
+      }
+    },
+    "Select language" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valt språk"
           }
         }
       }
@@ -101,6 +162,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Inställningar"
+          }
+        }
+      }
+    },
+    "Svenska" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Svenska"
           }
         }
       }

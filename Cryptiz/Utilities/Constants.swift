@@ -9,6 +9,7 @@ import Foundation
 
 struct Keys {
     static let currency = "currency"
+    static let language = "language"
 }
 
 struct SFSymbols {
@@ -18,6 +19,20 @@ struct SFSymbols {
 enum ExchangeCurrency: String {
     case sek = "SEK"
     case usd = "USD"
+}
+
+enum Language: String {
+    case en = "en"
+    case sv = "sv"
+
+    func string() -> String {
+        switch self {
+        case .en:
+            "English"
+        case .sv:
+            "Svenska"
+        }
+    }
 }
 
 enum Decimal: Int {

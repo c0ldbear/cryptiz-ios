@@ -25,4 +25,13 @@ class UserSetting {
             UserDefaults.standard.set(newValue.rawValue, forKey: Keys.currency)
         }
     }
+
+    var language: String {
+        get {
+            return UserDefaults.standard.string(forKey: Keys.language) ?? "en"
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: Keys.language)
+        }
+    }
 }

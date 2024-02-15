@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct PrimaryButton: View {
-    var title: String
+    var title: LocalizedStringResource
     var action: () -> Void
 
-    init(_ title: String, action: @escaping () -> Void) {
+    init(_ title: LocalizedStringResource, action: @escaping () -> Void) {
         self.title = title
         self.action = action
     }
@@ -20,7 +20,7 @@ struct PrimaryButton: View {
         Button{
             action()
         } label: {
-            Text(LocalizedStringKey(title))
+            Text(title)
                 .font(.title3)
                 .bold()
         }
