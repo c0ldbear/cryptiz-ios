@@ -157,6 +157,7 @@
       }
     },
     "Selected:" : {
+      "extractionState" : "stale",
       "localizations" : {
         "sv" : {
           "stringUnit" : {

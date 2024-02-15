@@ -17,6 +17,7 @@ struct SFSymbols {
 }
 
 enum ExchangeCurrency: String, CaseIterable {
+    case eur = "EUR"
     case sek = "SEK"
     case usd = "USD"
 }
