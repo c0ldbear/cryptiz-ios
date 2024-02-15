@@ -76,7 +76,14 @@
       }
     },
     "No cryptos found." : {
-
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hittade inga cryptovalutor."
+          }
+        }
+      }
     },
     "OK" : {
       "localizations" : {

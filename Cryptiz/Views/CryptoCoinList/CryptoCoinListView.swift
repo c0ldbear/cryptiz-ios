@@ -22,9 +22,11 @@ struct CryptoCoinListView: View {
                     // List all crypto currencies
                     CoinsListView(coins: coins)
                         .sheet(isPresented: $viewModel.showSettingsSheet) {
-                            fetchCoins()
+                            if viewModel.exchangeCurrencyUpdated {
+                                fetchCoins()
+                            }
                         } content: {
-                            SettingsView()
+                            SettingsView(exchangeCurrencyUpdated: $viewModel.exchangeCurrencyUpdated)
                         }
                 }
             }
@@ -43,6 +45,7 @@ struct CryptoCoinListView: View {
             .searchable(text: $viewModel.searchCrypto,
                         prompt: Text("Find crypto currency"))
         }
+        .tint(Color.white)
         .onAppear {
             fetchCoins()
         }

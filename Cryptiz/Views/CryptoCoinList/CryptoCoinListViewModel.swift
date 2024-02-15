@@ -23,6 +23,7 @@ class CryptoCoinListViewModel {
         }
     }
     var showSettingsSheet = false
+    var exchangeCurrencyUpdated = false
     var state: CryptoCoinListState = .loading
 
     @MainActor

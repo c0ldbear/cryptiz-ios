@@ -10,6 +10,7 @@ import SwiftUI
 struct SettingsView: View {
     @Environment(\.dismiss) var dismiss
     @State var viewModel = SettingsViewModel()
+    @Binding var exchangeCurrencyUpdated: Bool
 
     var body: some View {
         NavigationStack {
@@ -24,11 +25,6 @@ struct SettingsView: View {
                             }
                         }
                         .pickerStyle(.segmented)
-                        HStack {
-                            Text("Selected:")
-                            Spacer()
-                            Text(viewModel.selectedCurrency.rawValue)
-                        }
                     }
 
                     Divider()
@@ -44,11 +40,6 @@ struct SettingsView: View {
                             }
                         }
                         .pickerStyle(.segmented)
-                        HStack {
-                            Text("Selected:")
-                            Spacer()
-                            Text(viewModel.selectedLanguage.rawValue)
-                        }
                     }
                     .navigationTitle("Settings")
                     .navigationBarTitleDisplayMode(.inline)
@@ -60,7 +51,7 @@ struct SettingsView: View {
                 Spacer()
 
                 PrimaryButton("Save Settings") {
-                    viewModel.saveSettings(onNoLanguageChange: {
+                    exchangeCurrencyUpdated = viewModel.saveSettings(onNoLanguageChange: {
                         dismiss()
                     })
                 }
@@ -93,5 +84,5 @@ struct SettingsView: View {
 }
 
 #Preview {
-    SettingsView()
+    SettingsView(exchangeCurrencyUpdated: .constant(false))
 }

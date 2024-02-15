@@ -17,13 +17,20 @@ class SettingsViewModel {
     var currencies: [ExchangeCurrency] { ExchangeCurrency.allCases }
     var languages: [AppLanguage] { AppLanguage.allCases }
 
-    func saveSettings(onNoLanguageChange action: @escaping () -> Void) {
-        UserSetting.shared.currency = selectedCurrency
+    func saveSettings(onNoLanguageChange action: @escaping () -> Void) -> Bool {
+        var updatedExchangeCurrency = false
+        if selectedCurrency != UserSetting.shared.currency {
+            UserSetting.shared.currency = selectedCurrency
+            updatedExchangeCurrency = true
+        }
+
         if selectedLanguage != UserSetting.shared.language {
             UserSetting.shared.language = selectedLanguage
             showAlertRestartApp = true
         } else {
             action()
         }
+        
+        return updatedExchangeCurrency
     }
 }
