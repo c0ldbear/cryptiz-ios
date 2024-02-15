@@ -16,7 +16,7 @@ struct SFSymbols {
     static let gear = "gear"
 }
 
-enum ExchangeCurrency: String {
+enum ExchangeCurrency: String, CaseIterable {
     case sek = "SEK"
     case usd = "USD"
 }

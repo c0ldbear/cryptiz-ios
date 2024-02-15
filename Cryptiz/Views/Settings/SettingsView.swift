@@ -9,14 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
     @Environment(\.dismiss) var dismiss
-    @State var selectedCurrency = UserSetting.shared.currency
-    @State var selectedLanguage = UserSetting.shared.language
-    @State var showAlertRestartApp = false
-
-    var currency: [ExchangeCurrency] = [.usd, .sek]
-    var languages: [AppLanguage] {
-        return AppLanguage.allCases
-    }
+    @State var viewModel = SettingsViewModel()
 
     var body: some View {
         NavigationStack {
@@ -25,8 +18,8 @@ struct SettingsView: View {
                     VStack {
                         Text("Select preferred currency")
                             .multilineTextAlignment(.leading)
-                        Picker("Select Currency", selection: $selectedCurrency) {
-                            ForEach(currency, id: \.self) {
+                        Picker("Select Currency", selection: $viewModel.selectedCurrency) {
+                            ForEach(viewModel.currencies, id: \.self) {
                                 Text($0.rawValue)
                             }
                         }
@@ -34,7 +27,7 @@ struct SettingsView: View {
                         HStack {
                             Text("Selected:")
                             Spacer()
-                            Text(selectedCurrency.rawValue)
+                            Text(viewModel.selectedCurrency.rawValue)
                         }
                     }
 
@@ -45,8 +38,8 @@ struct SettingsView: View {
                         Text("Select app language")
                             .multilineTextAlignment(.leading)
 
-                        Picker("Select language", selection: $selectedLanguage) {
-                            ForEach(languages, id: \.self) {
+                        Picker("Select language", selection: $viewModel.selectedLanguage) {
+                            ForEach(viewModel.languages, id: \.self) {
                                 Text($0.string)
                             }
                         }
@@ -54,7 +47,7 @@ struct SettingsView: View {
                         HStack {
                             Text("Selected:")
                             Spacer()
-                            Text(selectedLanguage.rawValue)
+                            Text(viewModel.selectedLanguage.rawValue)
                         }
                     }
                     .navigationTitle("Settings")
@@ -67,13 +60,9 @@ struct SettingsView: View {
                 Spacer()
 
                 PrimaryButton("Save Settings") {
-                    UserSetting.shared.currency = selectedCurrency
-                    if selectedLanguage != UserSetting.shared.language {
-                        UserSetting.shared.language = selectedLanguage
-                        showAlertRestartApp = true
-                    } else {
+                    viewModel.saveSettings(onNoLanguageChange: {
                         dismiss()
-                    }
+                    })
                 }
                 .toolbar {
                     ToolbarItem(placement: .navigation) {
@@ -87,7 +76,8 @@ struct SettingsView: View {
                 }
                 .padding()
                 .padding(.bottom, 32)
-                .alert("Restart the app to change language", isPresented: $showAlertRestartApp) {
+                .alert("Restart the app to change language",
+                       isPresented: $viewModel.showAlertRestartApp) {
                     Button {
                         dismiss()
                     } label: {
