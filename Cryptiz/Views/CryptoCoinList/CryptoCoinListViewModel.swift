@@ -11,7 +11,7 @@ import Observation
 enum CryptoCoinListState {
     case loading
     case noSearchResult
-    case showResults(coins: [CryptoCoin])
+    case results(coins: [CryptoCoin])
 }
 
 @Observable
@@ -30,18 +30,18 @@ class CryptoCoinListViewModel {
         //        state = .showResults(coins: [])
         state = .loading
         coins = try await NetworkManager.shared.fetchListingsLatestCoins()
-        state = .showResults(coins: coins)
+        state = .results(coins: coins)
     }
 
     private func filterCoinsBySearchKeyword() {
         if searchCrypto.isEmpty {
-            state = .showResults(coins: coins)
+            state = .results(coins: coins)
             return
         }
 
         let keyword = searchCrypto.lowercased()
 
-        if case let .showResults(coins) = state {
+        if case let .results(coins) = state {
             let searchResult = coins.filter { coin in
                 coin.name.lowercased().contains(keyword) || coin.symbol.lowercased().contains(keyword)
             }
@@ -49,7 +49,7 @@ class CryptoCoinListViewModel {
             if searchResult.isEmpty {
                 state = .noSearchResult
             } else {
-                state = .showResults(coins: searchResult)
+                state = .results(coins: searchResult)
             }
         }
 

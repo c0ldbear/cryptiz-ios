@@ -15,35 +15,17 @@ struct CryptoCoinListView: View {
             VStack {
                 switch viewModel.state {
                 case .loading:
-                    ProgressView()
-                        .controlSize(.large)
+                    LoadingView()
                 case .noSearchResult:
-                    VStack {
-                        Text("No cryptos found.")
-                            .font(.title2)
-                            .foregroundStyle(Color.secondary)
-                            .padding()
-                        Spacer()
-                    }
-                case .showResults(let coins): // List all crypto currencies
-                    List(coins) { crypto in
-                        NavigationLink {
-                            // Detailed view
-                            DetailCryptoCoinView(viewModel:
-                                                    DetailCryptoCoinViewModel(coin: crypto))
-                        } label: {
-                            HStack {
-                                Text(crypto.name)
-                                Spacer()
-                                Text("\(crypto.rate)")
-                            }
+                    NoSearchResultsView()
+                case .results(let coins): 
+                    // List all crypto currencies
+                    CoinsListView(coins: coins)
+                        .sheet(isPresented: $viewModel.showSettingsSheet) {
+                            fetchCoins()
+                        } content: {
+                            SettingsView()
                         }
-                    }
-                    .sheet(isPresented: $viewModel.showSettingsSheet) {
-                        fetchCoins()
-                    } content: {
-                        SettingsView()
-                    }
                 }
             }
             .toolbar {
@@ -74,6 +56,16 @@ struct CryptoCoinListView: View {
                 print(">> error: \(error)")
             }
         }
+    }
+}
+
+private struct NoSearchResultsView: View {
+    var body: some View {
+        Text("No cryptos found.")
+            .font(.title2)
+            .foregroundStyle(Color.secondary)
+            .padding()
+        Spacer()
     }
 }
 
