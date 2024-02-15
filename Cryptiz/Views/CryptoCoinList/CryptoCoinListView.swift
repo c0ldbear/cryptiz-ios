@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CryptoCoinListView: View {
-    @StateObject var viewModel = CryptoCoinListViewModel()
+    @State var viewModel = CryptoCoinListViewModel()
 
     var body: some View {
         NavigationStack {

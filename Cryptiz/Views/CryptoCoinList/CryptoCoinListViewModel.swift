@@ -6,12 +6,14 @@
 //
 
 import Foundation
+import Observation
 
-class CryptoCoinListViewModel: ObservableObject {
-    @Published var coins = [CryptoCoin]()
-    @Published var searchCrypto = ""
-    @Published var showSettingsSheet = false
-    @Published var isLoading = false
+@Observable
+class CryptoCoinListViewModel {
+    var coins = [CryptoCoin]()
+    var searchCrypto = ""
+    var showSettingsSheet = false
+    var isLoading = false
 
     var filteredCoins: [CryptoCoin] {
         if searchCrypto.isEmpty {
