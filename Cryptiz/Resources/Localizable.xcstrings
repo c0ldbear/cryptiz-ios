@@ -54,6 +54,16 @@
         }
       }
     },
+    "Error: %@" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fel: %@"
+          }
+        }
+      }
+    },
     "Find crypto currency" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -156,23 +166,22 @@
         }
       }
     },
-    "Selected:" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vald:"
-          }
-        }
-      }
-    },
     "Settings" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Inställningar"
+          }
+        }
+      }
+    },
+    "Something went wrong!" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Något gick fel!"
           }
         }
       }

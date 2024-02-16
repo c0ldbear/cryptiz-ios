@@ -14,6 +14,7 @@ struct Keys {
 
 struct SFSymbols {
     static let gear = "gear"
+    static let ladybug = "ladybug.circle"
 }
 
 enum ExchangeCurrency: String, CaseIterable {

@@ -9,6 +9,7 @@ import Foundation
 import Observation
 
 enum CryptoCoinListState {
+    case error(errorString: String)
     case loading
     case noSearchResult
     case results(coins: [CryptoCoin])
@@ -25,6 +26,7 @@ class CryptoCoinListViewModel {
     var showSettingsSheet = false
     var exchangeCurrencyUpdated = false
     var state: CryptoCoinListState = .loading
+    var alertError = ""
 
     @MainActor
     func fetchLatestCoins() async throws {

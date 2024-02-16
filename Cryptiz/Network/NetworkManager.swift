@@ -14,7 +14,7 @@ enum NetworkManagerError: Error {
     case tooManyRequests // 429
     case internalServerError // 500
     case unexpected(statusCode: Int)
-    case unknown
+    case unknown(error: String)
 }
 
 final class NetworkManager {
@@ -35,7 +35,7 @@ final class NetworkManager {
 
     private init() {}
 
-    private func sendRequest(with urlString: String) async throws -> Data? {
+    private func sendRequest(with urlString: String) async throws -> Data {
 #if DEBUG
         try await Task.sleep(nanoseconds: 600_000_000)
 #endif
@@ -46,7 +46,7 @@ final class NetworkManager {
         var request = URLRequest(url: url)
         request.allHTTPHeaderFields = httpHeader
         request.httpMethod = "GET"
-
+        
         let (data, response) = try await URLSession.shared.data(for: request)
 
         if let httpResponse = response as? HTTPURLResponse {
@@ -66,26 +66,24 @@ final class NetworkManager {
                 throw NetworkManagerError.unexpected(statusCode: httpResponse.statusCode)
             }
         }
-        throw NetworkManagerError.unknown
+        throw NetworkManagerError.unknown(error: "")
     }
 
     func fetchListingsLatestCoins() async throws -> [CryptoCoin] {
-        do {
-            var urlComponent = URLComponents(string: baseURL)
-            urlComponent?.path = latestListings
-            urlComponent?.queryItems = [URLQueryItem(name: "convert", value: convert)]
+        var urlComponent = URLComponents(string: baseURL)
+        urlComponent?.path = latestListings
+        urlComponent?.queryItems = [URLQueryItem(name: "convert", value: convert)]
 
-            if let urlComponent = urlComponent?.string,
-               let coinData = try await sendRequest(with: urlComponent) {
-                let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
-                let result = try decoder.decode(Base.self, from: coinData)
-                return result.data
-            }
-        } catch {
-            print(">> here's an error :( \(error)")
+        guard let urlComponent = urlComponent?.string else {
+            throw NetworkManagerError.invalidURL
         }
 
-        throw NetworkManagerError.unknown
+        let coinData = try await sendRequest(with: urlComponent)
+
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        let result = try decoder.decode(Base.self, from: coinData)
+
+        return result.data
     }
 }
