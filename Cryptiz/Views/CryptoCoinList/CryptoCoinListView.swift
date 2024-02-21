@@ -20,6 +20,9 @@ struct CryptoCoinListView: View {
                     ErrorView(text: errorString)
                 case .loading:
                     LoadingView()
+                        .onAppear {
+                            fetchCoins()
+                        }
                 case .noSearchResult:
                     NoSearchResultsView()
                 case .results(let coins):
@@ -58,9 +61,6 @@ struct CryptoCoinListView: View {
             }
         }
         .tint(Color.white)
-        .onAppear {
-            fetchCoins()
-        }
     }
 
     private func fetchCoins() {

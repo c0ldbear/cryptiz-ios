@@ -30,7 +30,6 @@ class CryptoCoinListViewModel {
 
     @MainActor
     func fetchLatestCoins() async throws {
-        //        state = .showResults(coins: [])
         state = .loading
         coins = try await NetworkManager.shared.fetchListingsLatestCoins()
         state = .results(coins: coins)
