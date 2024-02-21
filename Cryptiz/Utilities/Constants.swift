@@ -17,6 +17,11 @@ struct SFSymbols {
     static let ladybug = "ladybug.circle"
 }
 
+struct InfoPlistKeys {
+    static let apiKey = "APIKey"
+    static let baseURL = "BaseURL"
+}
+
 enum ExchangeCurrency: String, CaseIterable {
     case eur = "EUR"
     case sek = "SEK"

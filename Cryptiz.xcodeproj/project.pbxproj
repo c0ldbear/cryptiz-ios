@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1303C6112B86494900DE62C5 /* Bundle+Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1303C6102B86494900DE62C5 /* Bundle+Info.swift */; };
 		1326183B2AF14354006DD925 /* CryptizApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1326183A2AF14354006DD925 /* CryptizApp.swift */; };
 		1326183D2AF14354006DD925 /* CryptoCoinListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1326183C2AF14354006DD925 /* CryptoCoinListView.swift */; };
 		1326183F2AF14358006DD925 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1326183E2AF14358006DD925 /* Assets.xcassets */; };
@@ -28,6 +29,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1303C60D2B86428600DE62C5 /* debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = debug.xcconfig; sourceTree = "<group>"; };
+		1303C60E2B86441300DE62C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		1303C6102B86494900DE62C5 /* Bundle+Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Info.swift"; sourceTree = "<group>"; };
+		1303C6122B864C3000DE62C5 /* release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = release.xcconfig; sourceTree = "<group>"; };
 		132618372AF14354006DD925 /* Cryptiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cryptiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1326183A2AF14354006DD925 /* CryptizApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptizApp.swift; sourceTree = "<group>"; };
 		1326183C2AF14354006DD925 /* CryptoCoinListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoCoinListView.swift; sourceTree = "<group>"; };
@@ -60,6 +65,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1303C60F2B86493100DE62C5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1303C6102B86494900DE62C5 /* Bundle+Info.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		1326182E2AF14354006DD925 = {
 			isa = PBXGroup;
 			children = (
@@ -79,9 +92,11 @@
 		132618392AF14354006DD925 /* Cryptiz */ = {
 			isa = PBXGroup;
 			children = (
+				1303C60E2B86441300DE62C5 /* Info.plist */,
 				1326183A2AF14354006DD925 /* CryptizApp.swift */,
 				1373EDBD2B7BCE2A00B6D062 /* Models */,
 				13BAA8062B7B642C00693DF3 /* Views */,
+				1303C60F2B86493100DE62C5 /* Extensions */,
 				1373EDB82B7BA73900B6D062 /* Utilities */,
 				13B03E492B752C4100CA13CC /* Network */,
 				1373EDC72B7CF3FC00B6D062 /* Resources */,
@@ -156,6 +171,8 @@
 			children = (
 				1326183E2AF14358006DD925 /* Assets.xcassets */,
 				1373EDC52B7CE8BA00B6D062 /* Localizable.xcstrings */,
+				1303C60D2B86428600DE62C5 /* debug.xcconfig */,
+				1303C6122B864C3000DE62C5 /* release.xcconfig */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -274,6 +291,7 @@
 				132C3E522B7E27C0003FE821 /* SettingsViewModel.swift in Sources */,
 				1326183D2AF14354006DD925 /* CryptoCoinListView.swift in Sources */,
 				1326183B2AF14354006DD925 /* CryptizApp.swift in Sources */,
+				1303C6112B86494900DE62C5 /* Bundle+Info.swift in Sources */,
 				1373EDBA2B7BA74800B6D062 /* Constants.swift in Sources */,
 				1373EDBC2B7BA91A00B6D062 /* UserSetting.swift in Sources */,
 			);
@@ -284,6 +302,7 @@
 /* Begin XCBuildConfiguration section */
 		132618432AF14358006DD925 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1303C60D2B86428600DE62C5 /* debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -412,6 +431,7 @@
 				DEVELOPMENT_TEAM = 3K93P5X8R8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Cryptiz/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -441,6 +461,7 @@
 				DEVELOPMENT_TEAM = 3K93P5X8R8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Cryptiz/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

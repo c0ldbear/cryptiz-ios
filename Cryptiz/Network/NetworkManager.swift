@@ -20,17 +20,13 @@ enum NetworkManagerError: Error {
 final class NetworkManager {
     static let shared = NetworkManager()
 
-    // sandbox api endpoint: Mocked data
-    private let baseURL = "https://sandbox-api.coinmarketcap.com"
-    private let apiKey = "b54bcf4d-1bca-4e8e-9a24-22ff2c3d462c"
+    private let baseURL = Bundle.main.info(for: InfoPlistKeys.baseURL)
+    private let apiKey = Bundle.main.info(for: InfoPlistKeys.apiKey)
     private let latestListings = "/v1/cryptocurrency/listings/latest"
-
+    private var convert: String { UserSetting.shared.currency.rawValue }
     private var httpHeader: [String : String] {
         ["X-CMC_PRO_API_KEY" : apiKey,
          "Accept" : "application/json"]
-    }
-    private var convert: String {
-        UserSetting.shared.currency.rawValue
     }
 
     private init() {}
@@ -39,6 +35,7 @@ final class NetworkManager {
 #if DEBUG
         try await Task.sleep(nanoseconds: 600_000_000)
 #endif
+
         guard let url = URL(string: urlString) else {
             throw NetworkManagerError.invalidURL
         }
@@ -46,7 +43,7 @@ final class NetworkManager {
         var request = URLRequest(url: url)
         request.allHTTPHeaderFields = httpHeader
         request.httpMethod = "GET"
-        
+
         let (data, response) = try await URLSession.shared.data(for: request)
 
         if let httpResponse = response as? HTTPURLResponse {
