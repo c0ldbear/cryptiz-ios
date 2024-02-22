@@ -68,9 +68,6 @@ struct CryptoCoinListView: View {
             do {
                 try await viewModel.fetchLatestCoins()
             } catch {
-                // TODO: Add alert handling when error happens
-                /// Show an alert when there is an error.
-
                 viewModel.alertError = error.localizedDescription.description
                 showErrorAlert.toggle()
                 viewModel.state = .error(errorString: viewModel.alertError)

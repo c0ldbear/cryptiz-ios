@@ -59,7 +59,6 @@ final class NetworkManager {
             case 500:
                 throw NetworkManagerError.internalServerError
             default:
-                // default behavior is what?
                 throw NetworkManagerError.unexpected(statusCode: httpResponse.statusCode)
             }
         }
