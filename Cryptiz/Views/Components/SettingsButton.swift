@@ -17,8 +17,8 @@ struct SettingsButton: View {
         } label: {
             Image(systemName: SFSymbols.gear)
         }
-        .foregroundStyle(.primary)
         .scaleEffect(1.1)
+        .foregroundStyle(Color.Theme.primary)
     }
 }
 

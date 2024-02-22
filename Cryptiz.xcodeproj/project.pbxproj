@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1303C6112B86494900DE62C5 /* Bundle+Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1303C6102B86494900DE62C5 /* Bundle+Info.swift */; };
+		1303C6142B8786DA00DE62C5 /* Color+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1303C6132B8786DA00DE62C5 /* Color+Theme.swift */; };
 		1326183B2AF14354006DD925 /* CryptizApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1326183A2AF14354006DD925 /* CryptizApp.swift */; };
 		1326183D2AF14354006DD925 /* CryptoCoinListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1326183C2AF14354006DD925 /* CryptoCoinListView.swift */; };
 		1326183F2AF14358006DD925 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1326183E2AF14358006DD925 /* Assets.xcassets */; };
@@ -33,6 +34,7 @@
 		1303C60E2B86441300DE62C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		1303C6102B86494900DE62C5 /* Bundle+Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Info.swift"; sourceTree = "<group>"; };
 		1303C6122B864C3000DE62C5 /* release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = release.xcconfig; sourceTree = "<group>"; };
+		1303C6132B8786DA00DE62C5 /* Color+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Theme.swift"; sourceTree = "<group>"; };
 		132618372AF14354006DD925 /* Cryptiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cryptiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1326183A2AF14354006DD925 /* CryptizApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptizApp.swift; sourceTree = "<group>"; };
 		1326183C2AF14354006DD925 /* CryptoCoinListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoCoinListView.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				1303C6102B86494900DE62C5 /* Bundle+Info.swift */,
+				1303C6132B8786DA00DE62C5 /* Color+Theme.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				134A788D2B7A591E00D9B17C /* NetworkManager.swift in Sources */,
+				1303C6142B8786DA00DE62C5 /* Color+Theme.swift in Sources */,
 				1373EDC02B7CC23C00B6D062 /* PrimaryButton.swift in Sources */,
 				1373EDB72B7B833200B6D062 /* SettingsView.swift in Sources */,
 				132C3E552B7E50E8003FE821 /* CoinsListView.swift in Sources */,

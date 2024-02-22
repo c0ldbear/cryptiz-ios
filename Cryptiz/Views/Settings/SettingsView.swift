@@ -61,6 +61,7 @@ struct SettingsView: View {
                             dismiss()
                         } label: {
                             Text("Cancel")
+                                .foregroundStyle(Color.Theme.primary)
                         }
                         .foregroundStyle(Color.primary)
                     }
