@@ -11,7 +11,7 @@ import Observation
 class DetailCryptoCoinViewModel {
     var coin: CryptoCoin
 
-    init(coin: CryptoCoin) {
-        self.coin = coin
+    init(crypto: CryptoCoin) {
+        self.coin = crypto
     }
 }

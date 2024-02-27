@@ -11,16 +11,12 @@ struct CoinsListView: View {
     var coins: [CryptoCoin]
 
     var body: some View {
-        List(coins) { crypto in
+        List(coins) { coin in
             NavigationLink {
                 DetailCryptoCoinView(viewModel:
-                                        DetailCryptoCoinViewModel(coin: crypto))
+                                        DetailCryptoCoinViewModel(crypto: coin))
             } label: {
-                HStack {
-                    Text(crypto.name)
-                    Spacer()
-                    Text("\(crypto.rate)")
-                }
+                CoinsListItemView(crypto: coin)
             }
         }
     }
