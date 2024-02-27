@@ -68,7 +68,9 @@ final class NetworkManager {
     func fetchListingsLatestCoins() async throws -> [CryptoCoin] {
         var urlComponent = URLComponents(string: baseURL)
         urlComponent?.path = latestListings
-        urlComponent?.queryItems = [URLQueryItem(name: "convert", value: convert)]
+        if !convert.contains(ExchangeCurrency.usd.rawValue) {
+            urlComponent?.queryItems = [URLQueryItem(name: "convert", value: convert)]
+        }
 
         guard let urlComponent = urlComponent?.string else {
             throw NetworkManagerError.invalidURL
