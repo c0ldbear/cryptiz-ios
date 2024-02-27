@@ -51,13 +51,12 @@ struct SettingsView: View {
                 Spacer()
 
                 PrimaryButton("Save Settings") {
-                    exchangeCurrencyUpdated = viewModel.saveSettings(onNoLanguageChange: {
-                        dismiss()
-                    })
+                    saveSettings()
                 }
                 .toolbar {
                     ToolbarItem(placement: .navigation) {
                         Button {
+                            saveSettings(false)
                             dismiss()
                         } label: {
                             Text("Cancel")
@@ -81,6 +80,17 @@ struct SettingsView: View {
             .padding()
         }
         .interactiveDismissDisabled()
+    }
+
+    private func saveSettings(_ saved: Bool = true) {
+        guard saved else {
+            exchangeCurrencyUpdated = false
+            return
+        }
+
+        exchangeCurrencyUpdated = viewModel.saveSettings(onNoLanguageChange: {
+            dismiss()
+        })
     }
 }
 
