@@ -77,38 +77,6 @@ struct CryptoCoinListView: View {
     }
 }
 
-private struct ErrorView: View {
-    var error: String
-
-    init(text error: String) {
-        self.error = error
-    }
-
-    var body: some View {
-        VStack {
-            Image(systemName: SFSymbols.ladybug)
-                .resizable()
-                .scaledToFit()
-                .frame(width: 56, height: 56)
-            Text("Something went wrong!")
-                .font(.title)
-            Text("Error: \(error)")
-                .font(.body)
-                .foregroundStyle(Color(red: 0.73, green: 0.09, blue: 0.11))
-        }
-    }
-}
-
-private struct NoSearchResultsView: View {
-    var body: some View {
-        Text("No cryptos found.")
-            .font(.title2)
-            .foregroundStyle(Color.secondary)
-            .padding()
-        Spacer()
-    }
-}
-
 #Preview {
     CryptoCoinListView()
 }
